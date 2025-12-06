@@ -3,52 +3,432 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Faceit EGO Enhancer | Data Protection & Security</title>
+    
+    <meta name="description" content="Privacy Policy for Faceit EGO Enhancer Chrome extension. Learn how we protect your data - no personal information collected, all data stored locally in your browser.">
+    <meta name="keywords" content="privacy policy, Faceit EGO Enhancer, data protection, Chrome extension privacy, FACEIT extension">
+    <meta name="author" content="evoa.studio">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#ff5500">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Privacy Policy - Faceit EGO Enhancer">
+    <meta property="og:description" content="Privacy Policy for Faceit EGO Enhancer. We don't collect personal data - your privacy is our priority.">
+    <meta property="og:url" content="https://evoa.studio/faceit-ego-enhancer/privacy-policy">
+    <meta property="og:site_name" content="Faceit EGO Enhancer">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Privacy Policy - Faceit EGO Enhancer">
+    <meta name="twitter:description" content="Privacy Policy for Faceit EGO Enhancer. We don't collect personal data - your privacy is our priority.">
+    
+    <link rel="canonical" href="https://evoa.studio/faceit-ego-enhancer/privacy-policy">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
-    <title>Privacy Policy</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
     <style>
-        body { font-family: "Play", sans-serif; margin: 40px; background: #121212; color: #fff; }
-        h1, h2 { color: #f50; }
-        .container { max-width: 800px; margin: auto; background: #060606; padding: 32px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        ul { margin-left: 20px; }
-        a{
-            color: #f50;
+        :root {
+            --primary: #ff5500;
+            --primary-light: #ff8c00;
+            --bg-dark: #0a0a0a;
+            --bg-card: #0d0d0d;
+            --bg-secondary: #121212;
+            --border: #1a1a1a;
+            --text: #ffffff;
+            --text-muted: #888888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text);
+            font-family: 'Play', Arial, sans-serif;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(255, 85, 0, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 140, 0, 0.04) 0%, transparent 50%);
+        }
+
+        .header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 60px 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-badge {
+            display: inline-block;
+            background: rgba(255, 85, 0, 0.1);
+            border: 1px solid rgba(255, 85, 0, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .page-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .policy-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
+        }
+
+        .section p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 16px;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .section li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .section li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .section li strong {
+            color: var(--text);
+        }
+
+        .highlight-box {
+            background: rgba(255, 85, 0, 0.08);
+            border: 1px solid rgba(255, 85, 0, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .contact-email {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .footer {
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-text a {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .policy-card {
+                padding: 24px;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .contact-box {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Privacy Policy</h1>
-        <p>Effective date: June 25, 2025</p>
-        <p>This Privacy Policy describes how the FACEIT Picker browser extension ("we", "us", or "our") collects, uses, and protects your information when you use our extension.</p>
+    <div class="bg-pattern"></div>
 
-        <h2>Information We Collect</h2>
-        <ul>
-            <li><strong>No Personal Data Collected:</strong> The FACEIT Picker extension does not collect, store, or transmit any personal information or sensitive data from users.</li>
-            <li><strong>Usage Data:</strong> We may collect anonymous, non-personal usage data (such as extension version, browser type, and error logs) to improve the extension’s performance and user experience. This data does not identify you personally.</li>
-        </ul>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <svg viewBox="0 0 235 235" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="117.5" cy="117.5" r="117.5" fill="white"/>
+                    <path d="M225.875 73.0165C189.01 58.1821 149.151 73.4387 118.969 95.4883L133.638 92.2571C152.328 88.6036 171.476 87.2634 190.478 89.1911C200.319 90.1825 210.068 92.0919 219.707 94.1848C219.872 94.8641 219.578 94.6622 219.339 94.8458C217.393 96.388 209.884 100.06 209.003 101.529C201.053 138.761 175.02 173.057 135.767 179.556C106.374 184.421 82.9292 174.984 56.6202 164.006C56.0694 163.785 54.7475 163.638 54.9311 162.904C71.6749 165.015 87.2253 172.414 103.877 174.893C147.095 181.355 182.529 156.074 191.598 113.793C191.929 112.25 193.655 103.383 193.141 102.667C183.539 101.125 173.606 100.592 163.894 101.216C171.991 120.439 165.638 143.957 149.17 156.552C137.236 165.676 122.2 168.118 107.861 163.565C87.1335 156.974 73.2538 135.236 77.3846 113.554C72.1339 116.143 66.0202 118.878 61.5405 122.679C57.0975 126.424 55.9042 129.453 57.171 135.255C58.9518 143.351 64.6616 148.731 70.1878 154.404C58.603 153.559 51.0757 145.499 43.6034 137.678C38.2975 148.088 28.8241 154.844 18.4878 159.691C24.73 151.338 32.2757 143.259 33.1385 132.281C29.9807 130.426 26.4007 129.123 23.2061 127.213C15.6237 122.66 11.2725 116.602 9.08777 107.991C12.0436 110.286 17.6065 115.115 21.4987 114.968C24.6932 114.839 28.9159 111.516 31.5046 109.699C38.7932 104.613 45.6964 98.9583 53.0585 93.9462C81.2585 74.7239 111.515 61.1012 145.571 56.0524C173.257 51.9399 204.285 53.1516 225.857 73.0348L225.875 73.0165ZM149.519 103.86L148.307 104.246L113.149 128.664L91.7968 122.66L91.3745 123.082C96.3132 128.315 101.307 133.529 106.209 138.798C108.853 141.625 111.294 144.71 113.975 147.482C114.544 148.07 116.637 150.456 117.316 150.254L149.519 103.86Z" fill="black"/>
+                    <path d="M149.519 103.859L117.316 150.254C116.637 150.455 114.544 148.087 113.975 147.481C111.276 144.709 108.834 141.625 106.209 138.797C101.307 133.528 96.3133 128.314 91.3746 123.082L91.7969 122.659L113.149 128.663L148.307 104.245L149.519 103.859Z" fill="#FF5500"/>
+                </svg>
+                <span class="logo-text">Faceit <span>EGO</span> Enhancer</span>
+            </a>
+            <a href="index.html" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </header>
 
-        <h2>How We Use Information</h2>
-        <ul>
-            <li>To maintain and improve the extension’s functionality and security.</li>
-            <li>To analyze usage trends and fix bugs.</li>
-        </ul>
+    <main class="content">
+        <div class="container">
+            <div class="page-header">
+                <span class="page-badge">Legal</span>
+                <h1 class="page-title">Privacy Policy</h1>
+                <p class="page-subtitle">Effective date: June 25, 2025</p>
+            </div>
 
-        <h2>Third-Party Services</h2>
-        <p>The extension does not share any data with third parties. If the extension links to external websites, please review their privacy policies separately.</p>
+            <div class="policy-card">
+                <div class="section">
+                    <p>This Privacy Policy describes how the Faceit EGO Enhancer browser extension ("we", "us", or "our") collects, uses, and protects your information when you use our extension.</p>
+                </div>
 
-        <h2>Data Security</h2>
-        <p>We take reasonable measures to protect any information processed by the extension. However, please be aware that no method of transmission over the Internet or method of electronic storage is 100% secure.</p>
+                <div class="section">
+                    <h2 class="section-title">Information We Collect</h2>
+                    <ul>
+                        <li><strong>No Personal Data Collected:</strong> The Faceit EGO Enhancer extension does not collect, store, or transmit any personal information or sensitive data from users.</li>
+                        <li><strong>Local Storage Only:</strong> All your settings, comments, and preferences are stored locally in your browser and are never sent to any external servers.</li>
+                        <li><strong>FACEIT API:</strong> The extension accesses the public FACEIT API to display player statistics. This data is fetched directly from FACEIT and is not stored or processed by us.</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <p>🔒 Your privacy is our priority. We believe in transparency and minimal data collection.</p>
+                    </div>
+                </div>
 
-        <h2>Children’s Privacy</h2>
-        <p>Our extension is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13.</p>
+                <div class="section">
+                    <h2 class="section-title">How We Use Information</h2>
+                    <ul>
+                        <li>To provide extension functionality (statistics display, position picking, player comments)</li>
+                        <li>To maintain and improve the extension's performance</li>
+                        <li>All processing happens locally in your browser</li>
+                    </ul>
+                </div>
 
-        <h2>Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.</p>
+                <div class="section">
+                    <h2 class="section-title">Third-Party Services</h2>
+                    <p>The extension interacts with the official FACEIT API to retrieve player statistics. We do not share any of your data with third parties. Please review FACEIT's privacy policy for information about their data handling practices.</p>
+                </div>
 
-        <h2>Contact Us</h2>
-        <p>If you have any questions or concerns about this Privacy Policy, please contact us at: <a href="mailto:evoa.studio@gmail.com">evoa.studio@gmail.com</a></p>
-    </div>
+                <div class="section">
+                    <h2 class="section-title">Data Security</h2>
+                    <p>Since all data is stored locally in your browser using Chrome's storage API, your information remains on your device. We do not have access to your stored data, comments, or settings.</p>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Children's Privacy</h2>
+                    <p>Our extension is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13.</p>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Changes to This Policy</h2>
+                    <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. We encourage you to review this policy periodically.</p>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Contact Us</h2>
+                    <p>If you have any questions or concerns about this Privacy Policy, please contact us:</p>
+                    <div class="contact-box">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-label">Email</div>
+                            <a href="mailto:evoa.studio@gmail.com" class="contact-email">evoa.studio@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                © 2025 <a href="https://evoa.studio/" target="_blank">evoa.studio</a> — Faceit EGO Enhancer
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

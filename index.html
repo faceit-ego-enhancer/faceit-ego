@@ -3,11 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faceit EGO Enhancer - CS2 Match Enhancement</title>
+    <title>Faceit EGO Enhancer - CS2 FACEIT Statistics & Position Picker Extension</title>
+    
+    <meta name="description" content="Enhance your FACEIT CS2 experience with detailed player statistics, performance predictions, smart position picking, and player comments. Free Chrome extension for competitive CS2 players.">
+    <meta name="keywords" content="FACEIT, CS2, Counter-Strike 2, browser extension, player statistics, ELO, position picker, Chrome extension, FACEIT enhancer, CS2 stats, competitive gaming">
+    <meta name="author" content="evoa.studio">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#ff5500">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Faceit EGO Enhancer - CS2 FACEIT Statistics Extension">
+    <meta property="og:description" content="Enhance your FACEIT CS2 experience with detailed player statistics, performance predictions, and smart position picking. Free Chrome extension.">
+    <meta property="og:image" content="img/faceit-ego-info.png">
+    <meta property="og:url" content="https://evoa.studio/faceit-ego-enhancer">
+    <meta property="og:site_name" content="Faceit EGO Enhancer">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Faceit EGO Enhancer - CS2 FACEIT Statistics Extension">
+    <meta name="twitter:description" content="Enhance your FACEIT CS2 experience with detailed player statistics, performance predictions, and smart position picking.">
+    <meta name="twitter:image" content="img/faceit-ego-info.png">
+    
+    <link rel="canonical" href="https://evoa.studio/faceit-ego-enhancer">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Faceit EGO Enhancer",
+        "applicationCategory": "BrowserApplication",
+        "operatingSystem": "Chrome",
+        "description": "Enhance your FACEIT CS2 experience with detailed player statistics, performance predictions, smart position picking, and player comments.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "evoa.studio",
+            "url": "https://evoa.studio"
+        },
+        "softwareVersion": "1.8.3",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "ratingCount": "100"
+        }
+    }
+    </script>
     <style>
         :root {
             --primary: #ff5500;
@@ -526,8 +574,7 @@
         }
 
         .verdicts-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            display: flex;
             gap: 16px;
             margin-top: 40px;
         }
@@ -539,6 +586,8 @@
             padding: 20px;
             text-align: center;
             transition: all 0.3s ease;
+            min-width: 0;
+            flex: 1;
         }
 
         .verdict-card:hover {
@@ -554,8 +603,11 @@
         }
 
         .verdict-name {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .warning-box {
@@ -684,7 +736,12 @@
             }
 
             .verdicts-grid {
-                grid-template-columns: repeat(3, 1fr);
+                flex-wrap: wrap;
+            }
+            
+            .verdict-card {
+                flex: 1 1 calc(33.333% - 12px);
+                min-width: 120px;
             }
         }
 
@@ -716,8 +773,8 @@
                 border-bottom: none;
             }
 
-            .verdicts-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .verdict-card {
+                flex: 1 1 calc(50% - 8px);
             }
 
             .footer-links {
@@ -736,8 +793,8 @@
                 justify-content: center;
             }
 
-            .verdicts-grid {
-                grid-template-columns: 1fr;
+            .verdict-card {
+                flex: 1 1 100%;
             }
         }
     </style>
@@ -796,9 +853,9 @@
                                 </div>
                             </div>
                             <div class="hero-image">
-                                <img src="img/faceit-ego-info.png" alt="Faceit EGO Enhancer" class="hero-img-main" data-speed="0.9">
-                                <img src="img/lobby-player-stats.png" alt="Lobby Stats" class="hero-float-card hero-float-1" data-speed="0.8">
-                                <img src="img/stats-today-yet.png" alt="Today Stats" class="hero-float-card hero-float-2" data-speed="1.1">
+                                <img src="img/faceit-ego-info.png" alt="Faceit EGO Enhancer" class="hero-img-main">
+                                <img src="img/lobby-player-stats.png" alt="Lobby Stats" class="hero-float-card hero-float-1">
+                                <img src="img/stats-today-yet.png" alt="Today Stats" class="hero-float-card hero-float-2">
                             </div>
                         </div>
                     </div>
@@ -1146,9 +1203,7 @@
                     content: '#smooth-content',
                     smooth: 1.2,
                     effects: true,
-                    smoothTouch: 0.1,
-                    normalizeScroll: true,
-                    ignoreMobileResize: true
+                    smoothTouch: 0.1
                 });
 
                 const exitTl = gsap.timeline({
@@ -1261,8 +1316,10 @@
                 const content = showcase.querySelector('.feature-content');
                 const image = showcase.querySelector('.feature-image');
                 const isReverse = showcase.classList.contains('reverse');
+                
+                const contentElements = content.querySelectorAll('.feature-icon, .feature-tag, .feature-title, .feature-desc, .feature-list');
 
-                gsap.from(content, {
+                gsap.from(contentElements, {
                     scrollTrigger: {
                         trigger: showcase,
                         start: "top 80%",
@@ -1271,6 +1328,7 @@
                     opacity: 0,
                     x: isReverse ? 50 : -50,
                     duration: 0.8,
+                    stagger: 0.1,
                     ease: "power3.out"
                 });
 
@@ -1304,20 +1362,27 @@
                         delay: 0.5
                     });
                 }
-            });
-
-            gsap.from('.verdict-card', {
-                scrollTrigger: {
-                    trigger: '.verdicts-grid',
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
-                },
-                opacity: 0,
-                y: 30,
-                scale: 0.9,
-                stagger: 0.1,
-                duration: 0.5,
-                ease: "back.out(1.7)"
+                
+                const verdictsGrid = showcase.querySelector('.verdicts-grid');
+                if (verdictsGrid) {
+                    const verdictCards = verdictsGrid.querySelectorAll('.verdict-card');
+                    gsap.set(verdictCards, { opacity: 1, y: 0, scale: 1 });
+                    
+                    gsap.from(verdictCards, {
+                        scrollTrigger: {
+                            trigger: verdictsGrid,
+                            start: "top 95%",
+                            toggleActions: "play none none reverse"
+                        },
+                        opacity: 0,
+                        y: 30,
+                        scale: 0.9,
+                        stagger: 0.1,
+                        duration: 0.5,
+                        ease: "back.out(1.7)",
+                        immediateRender: false
+                    });
+                }
             });
 
             gsap.utils.toArray('.step-item').forEach((step, i) => {
