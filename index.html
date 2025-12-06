@@ -3,303 +3,1485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Faceit EGO</title>
+    <title>Faceit EGO Enhancer - CS2 Match Enhancement</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/logo.png">
     <style>
-        body {
-            background: linear-gradient(135deg, #232526 0%, #414345 100%);
-            color: #fff;
-            font-family: 'Play', Arial, sans-serif;
+        :root {
+            --primary: #ff5500;
+            --primary-light: #ff8c00;
+            --bg-dark: #0a0a0a;
+            --bg-card: #0d0d0d;
+            --bg-secondary: #121212;
+            --border: #1a1a1a;
+            --text: #ffffff;
+            --text-muted: #888888;
+        }
+
+        * {
             margin: 0;
-            min-height: 100vh;
-            width: 100%;
+            padding: 0;
             box-sizing: border-box;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
         }
-        .container {
-            background: #060606;
-            border-radius: 18px;
-            box-shadow: 0 8px 32px 0 rgba(255, 85, 0, 0.384);
-            padding: 48px 32px;
-            max-width: 1300px;
+
+        html, body {
+            overflow-x: hidden;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text);
+            font-family: 'Play', Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        #smooth-wrapper {
+            overflow: hidden;
+            position: fixed;
+            height: 100%;
             width: 100%;
-            margin: 40px auto;
-            animation: fadeIn 1.2s cubic-bezier(.77,0,.18,1) 0.1s both;
-        }
-        h1 {
-            font-size: 2.8rem;
-            color: #f50;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-            animation: slideDown 1s cubic-bezier(.77,0,.18,1) 0.2s both;
-            text-align: center;
-        }
-        h2 {
-            color: #1a73e8;
-            margin-top: 32px;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-            animation: slideLeft 1s cubic-bezier(.77,0,.18,1) 0.3s both;
-        }
-        ul, ol {
-            margin-left: 24px;
-        }
-        .feature {
-            margin-bottom: 18px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 0.8s cubic-bezier(.77,0,.18,1) forwards;
-        }
-        .feature:nth-child(1) { animation-delay: 0.4s; }
-        .feature:nth-child(2) { animation-delay: 0.6s; }
-        .feature:nth-child(3) { animation-delay: 0.8s; }
-        .feature:nth-child(4) { animation-delay: 1.0s; }
-        .feature:nth-child(5) { animation-delay: 1.2s; }
-        .feature:nth-child(6) { animation-delay: 1.4s; }
-        .feature:nth-child(7) { animation-delay: 1.6s; }
-        .feature:nth-child(8) { animation-delay: 1.8s; }
-        .feature:nth-child(9) { animation-delay: 2.0s; }
-        .feature:nth-child(10) { animation-delay: 2.2s; }
-        .thanks {
-            margin-top: 36px;
-            font-size: 1.2rem;
-            color: #f50;
-            text-align: center;
-            letter-spacing: 1px;
-            opacity: 0;
-            animation: fadeIn 1.2s cubic-bezier(.77,0,.18,1) 2.4s forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideLeft {
-            from { opacity: 0; transform: translateX(-40px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .emoji {
-            font-size: 1.3em;
-            vertical-align: middle;
-        }
-        @media (max-width: 1400px) {
-            .container { max-width: 98vw; }
-        }
-        @media (max-width: 900px) {
-            .container { padding: 24px 8px; max-width: 100vw; }
-            h1 { font-size: 2rem; }
-        }
-        .feature-img {
-            display: block;
-            margin: 18px auto 0 auto;
-            max-width: 340px;
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 4px 24px 0 rgba(0,0,0,0.25);
-            opacity: 0;
-            transform: scale(0.95);
-            animation: imgFadeIn 1s cubic-bezier(.77,0,.18,1) 1.1s forwards;
-        }
-        @keyframes imgFadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .policy-link {
-            margin-top: 32px;
-            text-align: center;
-        }
-        .policy-link a {
-            color: #1a73e8;
-            font-size: 1.1rem;
-            text-decoration: none;
-            border-bottom: 1px dashed #1a73e8;
-            padding: 4px 12px;
-            border-radius: 6px;
-            transition: background 0.2s, color 0.2s, border 0.2s;
-            display: inline-block;
-        }
-        .policy-link a:hover {
-            background: #1a73e8;
-            color: #fff;
-            border-bottom: 1px solid #fff;
-        }
-        .site-logo {
-            display: block;
-            margin: 0 auto 18px auto;
-            width: 80px;
-            height: 80px;
-            border-radius: 18px;
-            box-shadow: 0 2px 12px 0 rgba(0,0,0,0.18);
-            background: #232526;
-            object-fit: cover;
-            animation: fadeIn 1.2s cubic-bezier(.77,0,.18,1) 0.1s both;
-        }
-        .contacts-link {
-            margin-top: 18px;
-            text-align: center;
-        }
-        .contacts-link a {
-            color: #24a1de;
-            font-size: 1.1rem;
-            text-decoration: none;
-            border-bottom: 1px dashed #24a1de;
-            padding: 4px 12px;
-            border-radius: 6px;
-            transition: background 0.2s, color 0.2s, border 0.2s;
-            display: inline-block;
-        }
-        .contacts-link a:hover {
-            background: #24a1de;
-            color: #fff;
-            border-bottom: 1px solid #fff;
-        }
-        .steps-list {
-            background: rgba(36, 41, 56, 0.92);
-            border-radius: 10px;
-            padding: 18px 28px 18px 36px;
-            margin: 18px 0 18px 0;
-            box-shadow: 0 2px 10px 0 rgba(0,0,0,0.10);
-            font-size: 1.08rem;
-            color: #e3e3e3;
-            counter-reset: step;
-            list-style: none;
-        }
-        .steps-list li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 8px;
-        }
-        .steps-list li::before {
-            content: counter(step);
-            counter-increment: step;
-            position: absolute;
-            left: -28px;
             top: 0;
-            background: #1a73e8;
-            color: #fff;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            visibility: hidden;
+            z-index: 1;
+        }
+
+        #smooth-content {
+            overflow: visible;
+            width: 100%;
+        }
+
+        #smooth-wrapper.ready {
+            visibility: visible;
+        }
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .preloader-logo {
+            width: 120px;
+            height: 120px;
+        }
+
+        .preloader-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .preloader-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            opacity: 0;
+        }
+
+        .preloader-text span {
+            color: var(--primary);
+        }
+
+        .preloader-bar {
+            width: 200px;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .preloader-progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
+        }
+
+        .preloader-percent {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            opacity: 0;
+        }
+
+        .main-content {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .hero-badge,
+        .hero-title,
+        .hero-desc,
+        .hero-cta .btn,
+        .hero-img-main,
+        .hero-float-1,
+        .hero-float-2 {
+            opacity: 0;
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(255, 85, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 140, 0, 0.06) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 1rem;
-            box-shadow: 0 1px 4px 0 rgba(26,115,232,0.15);
+            padding: 60px 0;
+            position: relative;
         }
-        .step-img {
-            display: block;
-            margin: 12px auto 0 auto;
-            max-width: 340px;
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
             width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 2px 12px 0 rgba(0,0,0,0.18);
-            background: #232526;
-            object-fit: contain;
-            animation: imgFadeIn 1s cubic-bezier(.77,0,.18,1) 0.2s both;
         }
-        .release-section {
-            margin: 32px auto 0 auto;
-            text-align: center;
-            background: rgba(36, 41, 56, 0.92);
+
+        .hero-text {
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 85, 0, 0.1);
+            border: 1px solid rgba(255, 85, 0, 0.3);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
             border-radius: 12px;
-            padding: 22px 18px 16px 18px;
-            max-width: 500px;
-            box-shadow: 0 2px 10px 0 rgba(255,85,0,0.10);
-        }
-        .release-link {
-            display: inline-block;
-            font-size: 1.18rem;
-            color: #fff;
-            background: #f50;
-            padding: 10px 28px;
-            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
             text-decoration: none;
-            font-weight: bold;
-            margin-bottom: 10px;
-            transition: background 0.2s, color 0.2s;
-            max-width: 430px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: #fff;
+            box-shadow: 0 8px 30px rgba(255, 85, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 85, 0, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: #fff;
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-img-main {
             width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
         }
-        .release-link:hover {
-            background: #fff;
-            color: #f50;
+
+        .hero-float-card {
+            position: absolute;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
         }
-        .release-note {
-            margin-top: 10px;
-            color: #e3e3e3;
-            font-size: 1.02rem;
+
+        .hero-float-1 {
+            width: 200px;
+            bottom: -30px;
+            left: -40px;
         }
-        .release-note a {
-            color: #24a1de;
-            text-decoration: underline;
+
+        .hero-float-2 {
+            width: 180px;
+            top: 20px;
+            right: -30px;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: rgba(255, 85, 0, 0.1);
+            border: 1px solid rgba(255, 85, 0, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feature-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
+        .feature-showcase.reverse {
+            direction: rtl;
+        }
+
+        .feature-showcase.reverse > * {
+            direction: ltr;
+        }
+
+        .feature-content {
+            padding: 20px 0;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            background: rgba(255, 85, 0, 0.1);
+            border: 1px solid rgba(255, 85, 0, 0.2);
+        }
+
+        .feature-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .feature-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .feature-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .feature-list-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+        }
+
+        .feature-list-item svg {
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+
+        .feature-image {
+            position: relative;
+        }
+
+        .feature-img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+        }
+
+        .feature-img-float {
+            position: absolute;
+            border-radius: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+        }
+
+        .howto-section {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        .step-item {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .step-item.reverse {
+            grid-template-columns: 1.2fr 1fr;
+        }
+
+        .step-item.reverse .step-content {
+            order: 2;
+        }
+
+        .step-item.reverse .step-image {
+            order: 1;
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(255, 85, 0, 0.3);
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .step-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .step-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+        }
+
+        .stats-preview-section {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
+        }
+
+        .stats-preview-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .stats-preview-title {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px 30px;
+            border-right: 1px solid var(--border);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .verdicts-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .verdict-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .verdict-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .verdict-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+        }
+
+        .verdict-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .warning-box {
+            background: rgba(255, 193, 7, 0.08);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            max-width: 800px;
+            margin: 60px auto 0;
+        }
+
+        .warning-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .warning-text {
+            color: #ffc107;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+        }
+
+        .footer-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer-thanks {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+        }
+
+        .footer-credit {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-credit a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text {
+                order: 1;
+            }
+
+            .hero-image {
+                order: 2;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .hero-float-card {
+                display: none;
+            }
+
+            .feature-showcase,
+            .feature-showcase.reverse {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                direction: ltr;
+            }
+
+            .step-item,
+            .step-item.reverse {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .step-item .step-content,
+            .step-item.reverse .step-content {
+                order: 1;
+            }
+
+            .step-item .step-image,
+            .step-item.reverse .step-image {
+                order: 2;
+            }
+
+            .verdicts-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .feature-title,
+            .step-title {
+                font-size: 1.5rem;
+            }
+
+            .stats-grid {
+                flex-direction: column;
+            }
+
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 16px;
+            }
+
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+
+            .verdicts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .verdicts-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="img/logo.png" alt="FACEIT Picker Logo" class="site-logo">
-        <h1>Welcome to Faceit EGO Enhancer<br>(POSPICKER)! </h1>
-        <div class="feature">Our extension currently has <b>2 main functions</b>:</div>
-        <div class="feature"><b>Position picker <span class="emoji">📍</span></b><br>Players can write the positions they play on different maps and the extension will automatically send them to the chat immediately after choosing a map.<br>
-            <img src="img/positions.jpg" alt="Position picker screenshot" class="feature-img">
+    <div class="preloader">
+        <div class="preloader-logo">
+            <svg viewBox="0 0 235 235" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="117.5" cy="117.5" r="117.5" fill="white"/>
+                <path d="M225.875 73.0165C189.01 58.1821 149.151 73.4387 118.969 95.4883L133.638 92.2571C152.328 88.6036 171.476 87.2634 190.478 89.1911C200.319 90.1825 210.068 92.0919 219.707 94.1848C219.872 94.8641 219.578 94.6622 219.339 94.8458C217.393 96.388 209.884 100.06 209.003 101.529C201.053 138.761 175.02 173.057 135.767 179.556C106.374 184.421 82.9292 174.984 56.6202 164.006C56.0694 163.785 54.7475 163.638 54.9311 162.904C71.6749 165.015 87.2253 172.414 103.877 174.893C147.095 181.355 182.529 156.074 191.598 113.793C191.929 112.25 193.655 103.383 193.141 102.667C183.539 101.125 173.606 100.592 163.894 101.216C171.991 120.439 165.638 143.957 149.17 156.552C137.236 165.676 122.2 168.118 107.861 163.565C87.1335 156.974 73.2538 135.236 77.3846 113.554C72.1339 116.143 66.0202 118.878 61.5405 122.679C57.0975 126.424 55.9042 129.453 57.171 135.255C58.9518 143.351 64.6616 148.731 70.1878 154.404C58.603 153.559 51.0757 145.499 43.6034 137.678C38.2975 148.088 28.8241 154.844 18.4878 159.691C24.73 151.338 32.2757 143.259 33.1385 132.281C29.9807 130.426 26.4007 129.123 23.2061 127.213C15.6237 122.66 11.2725 116.602 9.08777 107.991C12.0436 110.286 17.6065 115.115 21.4987 114.968C24.6932 114.839 28.9159 111.516 31.5046 109.699C38.7932 104.613 45.6964 98.9583 53.0585 93.9462C81.2585 74.7239 111.515 61.1012 145.571 56.0524C173.257 51.9399 204.285 53.1516 225.857 73.0348L225.875 73.0165ZM149.519 103.86L148.307 104.246L113.149 128.664L91.7968 122.66L91.3745 123.082C96.3132 128.315 101.307 133.529 106.209 138.798C108.853 141.625 111.294 144.71 113.975 147.482C114.544 148.07 116.637 150.456 117.316 150.254L149.519 103.86Z" fill="black"/>
+                <path class="preloader-check" d="M149.519 103.859L117.316 150.254C116.637 150.455 114.544 148.087 113.975 147.481C111.276 144.709 108.834 141.625 106.209 138.797C101.307 133.528 96.3133 128.314 91.3746 123.082L91.7969 122.659L113.149 128.663L148.307 104.245L149.519 103.859Z" fill="#FF5500"/>
+            </svg>
         </div>
-        <div class="feature"><b>Comments for players <span class="emoji">💬</span></b><br>Players can write comments (notes) for any player in the lobby.<br>Then in the next matches, if they get matched with the player they left a comment for, they will know whether it is good or not.<br>
-            <img src="img/comments.jpg" alt="Comments feature screenshot" class="feature-img">
+        <div class="preloader-text">Faceit <span>EGO</span> Enhancer</div>
+        <div class="preloader-bar">
+            <div class="preloader-progress"></div>
         </div>
-        <h2>How to use? <span class="emoji">🤔</span></h2>
-        <div class="feature">Using the extension is quite simple.</div>
-        <div class="feature">In order to enter the required positions on the maps, you need to go to the <b>"Positions"</b> tab, mark the cards and write the positions and click the <b>"Save"</b> button.</div>
-        <div class="feature">To leave comments, you need to click on <b>"💬"</b> next to the player's nickname, a modal window will appear where you need to enter a comment and click the <b>"Save"</b> button.</div>
-        <ol class="steps-list">
-            <li>Click on <b>"💬"</b> next to the player's nickname in the lobby.<br><img src="img/com-step-1.png" alt="Step 1: Click comment icon" class="step-img"></li>
-            <li>A modal window will appear. Enter your comment (note) about the player.<br><img src="img/com-step-2.png" alt="Step 2: Modal window and enter comment" class="step-img"></li>
-            <li>Click the <b>"Save"</b> button to save your comment.<br><img src="img/com-step-3.png" alt="Step 3: Save comment" class="step-img"></li>
-            <li>Next time you meet this player, your comment will be shown automatically.</li>
-        </ol>
-        <div class="feature">Comments have some settings:</div>
-        <ul class="feature">
-            <li>Search players by nickname</li>
-            <li>Delete one comment</li>
-            <li>Disable comments</li>
-            <li>Remove all comments</li>
-        </ul>
-        <div class="release-section">
-            <a href="https://chromewebstore.google.com/detail/iabcbcabiglccadhckmpaddefafgbiem?utm_source=item-share-cb" target="_blank" class="release-link" style="background:#1a73e8;">🛒 Install from Chrome Web Store</a>
-                       <div class="release-note">
-                <b>Note:</b> The extension is now available in the <span style="color:#1a73e8;">Chrome Web Store</span>!<br>
-                This is the <span style="color:#f50;">first release</span> of the extension. Bugs are possible!<br>
-                Please report any issues or feedback in Telegram: <a href="https://t.me/evoa_studio" target="_blank">@evoa_studio</a>
+        <div class="preloader-percent">0%</div>
+    </div>
+
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <div class="main-content">
+                <div class="bg-pattern" data-speed="0.5"></div>
+
+                <section class="hero">
+                    <div class="container">
+                        <div class="hero-content">
+                            <div class="hero-text">
+                                <div class="hero-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    Version 1.8.3 — Now Free!
+                                </div>
+                                <h1 class="hero-title">
+                                    Faceit <span>EGO</span><br>Enhancer
+                                </h1>
+                                <p class="hero-desc">
+                                    Enhance your FACEIT CS2 experience with detailed player statistics, 
+                                    performance predictions, and smart position picking.
+                                </p>
+                                <div class="hero-cta">
+                                    <a href="https://chromewebstore.google.com/detail/iabcbcabiglccadhckmpaddefafgbiem" target="_blank" class="btn btn-primary">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                        Install Extension
+                                    </a>
+                                    <a href="https://t.me/evoa_studio" target="_blank" class="btn btn-secondary">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                                        </svg>
+                                        Contact Us
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="hero-image">
+                                <img src="img/faceit-ego-info.png" alt="Faceit EGO Enhancer" class="hero-img-main" data-speed="0.9">
+                                <img src="img/lobby-player-stats.png" alt="Lobby Stats" class="hero-float-card hero-float-1" data-speed="0.8">
+                                <img src="img/stats-today-yet.png" alt="Today Stats" class="hero-float-card hero-float-2" data-speed="1.1">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section" id="lobby-stats">
+                    <div class="container">
+                        <div class="feature-showcase">
+                            <div class="feature-content">
+                                <div class="feature-icon" data-lag="0.1">📊</div>
+                                <span class="feature-tag">NEW FEATURE</span>
+                                <h2 class="feature-title">Lobby Player Statistics</h2>
+                                <p class="feature-desc">
+                                    See detailed statistics for every player directly in the match lobby. 
+                                    Know your teammates and enemies before the game even starts.
+                                </p>
+                                <div class="feature-list">
+                                    <div class="feature-list-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                        Total matches played & Winrate
+                                    </div>
+                                    <div class="feature-list-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                        Average Kills, K/D, K/R, ADR
+                                    </div>
+                                    <div class="feature-list-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                        Color-coded stats (red = low performance)
+                                    </div>
+                                    <div class="feature-list-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                        Configurable match count (5-100)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-image">
+                                <img src="img/full-lobby-profile-card.png" alt="Full Lobby Profile Card" class="feature-img" data-speed="0.95">
+                                <img src="img/lobby-count-matches-btn.png" alt="Match Count Selector" class="feature-img-float" style="width: 200px; bottom: -20px; right: -20px;" data-speed="1.1">
+                            </div>
+                        </div>
+
+                        <div class="feature-showcase reverse">
+                            <div class="feature-content">
+                                <div class="feature-icon" data-lag="0.1">📈</div>
+                                <h2 class="feature-title">Today/Yesterday Performance</h2>
+                                <p class="feature-desc">
+                                    Get instant performance analysis based on recent games. 
+                                    Know if a player is on a hot streak or having a bad day.
+                                </p>
+                                <div class="feature-list">
+                                    <div class="feature-list-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                        Analyzes today & yesterday matches
+                                    </div>
+                                    <div class="feature-list-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                        K/D, K/R, Winrate, HS%, Rating
+                                    </div>
+                                    <div class="feature-list-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                        Hover for detailed breakdown
+                                    </div>
+                                </div>
+
+                                <div class="verdicts-grid">
+                                    <div class="verdict-card">
+                                        <div class="verdict-dot" style="background: #00e676;"></div>
+                                        <div class="verdict-name" style="color: #00e676;">Very Strong</div>
+                                    </div>
+                                    <div class="verdict-card">
+                                        <div class="verdict-dot" style="background: #4caf50;"></div>
+                                        <div class="verdict-name" style="color: #4caf50;">Consistent</div>
+                                    </div>
+                                    <div class="verdict-card">
+                                        <div class="verdict-dot" style="background: #ffb300;"></div>
+                                        <div class="verdict-name" style="color: #ffb300;">Has Peaks</div>
+                                    </div>
+                                    <div class="verdict-card">
+                                        <div class="verdict-dot" style="background: #ff9800;"></div>
+                                        <div class="verdict-name" style="color: #ff9800;">Inconsistent</div>
+                                    </div>
+                                    <div class="verdict-card">
+                                        <div class="verdict-dot" style="background: #f44336;"></div>
+                                        <div class="verdict-name" style="color: #f44336;">Weak</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-image">
+                                <img src="img/stats-today-yet.png" alt="Today/Yesterday Stats" class="feature-img" data-speed="0.9">
+                            </div>
+                        </div>
+
+                        <div class="feature-showcase">
+                            <div class="feature-content">
+                                <div class="feature-icon" data-lag="0.1">🗺️</div>
+                                <h2 class="feature-title">Smart Position Picker</h2>
+                                <p class="feature-desc">
+                                    Automatically send your preferred positions to team chat when the map is picked. 
+                                    Never type your positions manually again.
+                                </p>
+                                <div class="feature-list">
+                                    <div class="feature-list-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                        All competitive maps supported
+                                    </div>
+                                    <div class="feature-list-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                        Auto-sends to match chat
+                                    </div>
+                                    <div class="feature-list-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                        Enable/disable per map
+                                    </div>
+                                    <div class="feature-list-item">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                        Changes save automatically
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-image">
+                                <img src="img/positions.png" alt="Position Picker" class="feature-img" data-speed="0.95">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section howto-section" id="comments">
+                    <div class="container">
+                        <div class="section-header">
+                            <span class="section-badge">Player Comments</span>
+                            <h2 class="section-title">Leave Notes for Players</h2>
+                            <p class="section-desc">
+                                Remember toxic players, skilled teammates, or anyone you want to track. 
+                                Your comments will appear when you meet them again.
+                            </p>
+                        </div>
+
+                        <div class="steps-container">
+                            <div class="step-item">
+                                <div class="step-content">
+                                    <div class="step-number">1</div>
+                                    <h3 class="step-title">Click the Comment Icon</h3>
+                                    <p class="step-desc">
+                                        In the match lobby, find the 💬 icon next to any player's nickname. 
+                                        This icon appears for all players in both teams.
+                                    </p>
+                                </div>
+                                <div class="step-image">
+                                    <img src="img/com-step-1.png" alt="Step 1 - Click comment icon" data-speed="0.9">
+                                </div>
+                            </div>
+
+                            <div class="step-item reverse">
+                                <div class="step-content">
+                                    <div class="step-number">2</div>
+                                    <h3 class="step-title">Write Your Note</h3>
+                                    <p class="step-desc">
+                                        A modal window will appear where you can write your comment about the player. 
+                                        This can be anything - their playstyle, communication, or just a reminder.
+                                    </p>
+                                </div>
+                                <div class="step-image">
+                                    <img src="img/com-step-2.png" alt="Step 2 - Write comment" data-speed="0.95">
+                                </div>
+                            </div>
+
+                            <div class="step-item">
+                                <div class="step-content">
+                                    <div class="step-number">3</div>
+                                    <h3 class="step-title">See Your Comments</h3>
+                                    <p class="step-desc">
+                                        Your saved comments will automatically appear under the player's card 
+                                        whenever you meet them in future matches. Never forget a player again!
+                                    </p>
+                                </div>
+                                <div class="step-image">
+                                    <img src="img/full-lobby-profile-card.png" alt="Step 3 - See comment in lobby" data-speed="0.9">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="warning-box">
+                            <span class="warning-icon">⚠️</span>
+                            <span class="warning-text">
+                                <strong>Note:</strong> May not work correctly if you have statistics enabled from other FACEIT extensions. 
+                                Disable their stats features to avoid conflicts.
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section stats-preview-section">
+                    <div class="container">
+                        <div class="section-header">
+                            <span class="section-badge">Statistics Preview</span>
+                            <h2 class="section-title">Data at Your Fingertips</h2>
+                            <p class="section-desc">
+                                See what statistics are available for every player in the lobby
+                            </p>
+                        </div>
+
+                        <div class="stats-preview-card">
+                            <p class="stats-preview-title">Example player statistics from last 20 matches</p>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-label">Matches</div>
+                                    <div class="stat-value">847</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Winrate</div>
+                                    <div class="stat-value">62%</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Avg. Kills</div>
+                                    <div class="stat-value">20</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Avg. K/D</div>
+                                    <div class="stat-value">1.25</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Avg. K/R</div>
+                                    <div class="stat-value">0.92</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">ADR</div>
+                                    <div class="stat-value">86.4</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="footer">
+                    <div class="container">
+                        <div class="footer-logo">
+                            <svg viewBox="0 0 235 235" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="117.5" cy="117.5" r="117.5" fill="white"/>
+                                <path d="M225.875 73.0165C189.01 58.1821 149.151 73.4387 118.969 95.4883L133.638 92.2571C152.328 88.6036 171.476 87.2634 190.478 89.1911C200.319 90.1825 210.068 92.0919 219.707 94.1848C219.872 94.8641 219.578 94.6622 219.339 94.8458C217.393 96.388 209.884 100.06 209.003 101.529C201.053 138.761 175.02 173.057 135.767 179.556C106.374 184.421 82.9292 174.984 56.6202 164.006C56.0694 163.785 54.7475 163.638 54.9311 162.904C71.6749 165.015 87.2253 172.414 103.877 174.893C147.095 181.355 182.529 156.074 191.598 113.793C191.929 112.25 193.655 103.383 193.141 102.667C183.539 101.125 173.606 100.592 163.894 101.216C171.991 120.439 165.638 143.957 149.17 156.552C137.236 165.676 122.2 168.118 107.861 163.565C87.1335 156.974 73.2538 135.236 77.3846 113.554C72.1339 116.143 66.0202 118.878 61.5405 122.679C57.0975 126.424 55.9042 129.453 57.171 135.255C58.9518 143.351 64.6616 148.731 70.1878 154.404C58.603 153.559 51.0757 145.499 43.6034 137.678C38.2975 148.088 28.8241 154.844 18.4878 159.691C24.73 151.338 32.2757 143.259 33.1385 132.281C29.9807 130.426 26.4007 129.123 23.2061 127.213C15.6237 122.66 11.2725 116.602 9.08777 107.991C12.0436 110.286 17.6065 115.115 21.4987 114.968C24.6932 114.839 28.9159 111.516 31.5046 109.699C38.7932 104.613 45.6964 98.9583 53.0585 93.9462C81.2585 74.7239 111.515 61.1012 145.571 56.0524C173.257 51.9399 204.285 53.1516 225.857 73.0348L225.875 73.0165ZM149.519 103.86L148.307 104.246L113.149 128.664L91.7968 122.66L91.3745 123.082C96.3132 128.315 101.307 133.529 106.209 138.798C108.853 141.625 111.294 144.71 113.975 147.482C114.544 148.07 116.637 150.456 117.316 150.254L149.519 103.86Z" fill="black"/>
+                                <path d="M149.519 103.859L117.316 150.254C116.637 150.455 114.544 148.087 113.975 147.481C111.276 144.709 108.834 141.625 106.209 138.797C101.307 133.528 96.3133 128.314 91.3746 123.082L91.7969 122.659L113.149 128.663L148.307 104.245L149.519 103.859Z" fill="#FF5500"/>
+                            </svg>
+                        </div>
+                        <p class="footer-thanks">Thank you for using Faceit EGO Enhancer! 🙏</p>
+                        <div class="footer-links">
+                            <a href="https://chromewebstore.google.com/detail/iabcbcabiglccadhckmpaddefafgbiem" target="_blank" class="footer-link">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                Chrome Web Store
+                            </a>
+                            <a href="https://t.me/evoa_studio" target="_blank" class="footer-link">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                                </svg>
+                                Telegram: @evoa_studio
+                            </a>
+                            <a href="privacy-policy.html" target="_blank" class="footer-link">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                                </svg>
+                                Privacy Policy
+                            </a>
+                        </div>
+                        <p class="footer-credit">
+                            Created by <a href="https://evoa.studio/" target="_blank">evoa.studio</a>
+                        </p>
+                    </div>
+                </footer>
             </div>
         </div>
-        <div class="thanks">Thank you for using our extension! <span class="emoji">🙏</span></div>
-        <div class="policy-link">
-            <a href="privacy-policy.html" target="_blank">&#128274; Privacy Policy</a>
-        </div>
-        <div class="contacts-link">
-            <a href="https://t.me/evoa_studio" target="_blank">&#128172; Contact us on Telegram: @evoa_studio</a>
-        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+
     <script>
-        // Animate features in sequence
-        document.addEventListener('DOMContentLoaded', () => {
-            const features = document.querySelectorAll('.feature');
-            features.forEach((el, i) => {
-                el.style.animationDelay = (0.4 + i * 0.2) + 's';
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin);
+
+        let smoother = null;
+
+        const preloader = document.querySelector('.preloader');
+        const preloaderLogo = document.querySelector('.preloader-logo');
+        const preloaderText = document.querySelector('.preloader-text');
+        const preloaderProgress = document.querySelector('.preloader-progress');
+        const preloaderPercent = document.querySelector('.preloader-percent');
+        const mainContent = document.querySelector('.main-content');
+
+        let progress = 0;
+        const images = document.querySelectorAll('img');
+        let loadedImages = 0;
+        const totalImages = images.length;
+
+        const preloaderTl = gsap.timeline();
+
+        preloaderTl
+            .from(preloaderLogo, {
+                scale: 0,
+                rotation: -180,
+                duration: 0.8,
+                ease: "back.out(1.7)"
+            })
+            .to(preloaderText, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: "power2.out"
+            }, "-=0.3")
+            .to(preloaderPercent, {
+                opacity: 1,
+                duration: 0.3
+            }, "-=0.2");
+
+        function updateProgress(value) {
+            gsap.to(preloaderProgress, {
+                width: value + '%',
+                duration: 0.3,
+                ease: "power2.out"
             });
+            preloaderPercent.textContent = Math.round(value) + '%';
+        }
+
+        function imageLoaded() {
+            loadedImages++;
+            const percent = (loadedImages / totalImages) * 100;
+            updateProgress(Math.min(percent, 95));
+        }
+
+        images.forEach(img => {
+            if (img.complete) {
+                imageLoaded();
+            } else {
+                img.addEventListener('load', imageLoaded);
+                img.addEventListener('error', imageLoaded);
+            }
         });
+
+        window.addEventListener('load', () => {
+            updateProgress(100);
+            
+            setTimeout(() => {
+                smoother = ScrollSmoother.create({
+                    wrapper: '#smooth-wrapper',
+                    content: '#smooth-content',
+                    smooth: 1.2,
+                    effects: true,
+                    smoothTouch: 0.1,
+                    normalizeScroll: true,
+                    ignoreMobileResize: true
+                });
+
+                const exitTl = gsap.timeline({
+                    onComplete: () => {
+                        preloader.style.display = 'none';
+                        ScrollTrigger.refresh();
+                    }
+                });
+
+                exitTl
+                    .to(preloaderPercent, { opacity: 0, duration: 0.2 })
+                    .to(preloaderProgress.parentElement, { opacity: 0, duration: 0.2 }, "-=0.1")
+                    .to(preloaderText, { opacity: 0, y: -20, duration: 0.3 }, "-=0.1")
+                    .to(preloaderLogo, { 
+                        scale: 0.5, 
+                        opacity: 0, 
+                        duration: 0.4,
+                        ease: "power2.in"
+                    }, "-=0.2")
+                    .add(() => {
+                        document.getElementById('smooth-wrapper').classList.add('ready');
+                        gsap.set(mainContent, { opacity: 1, visibility: 'visible' });
+                        initMainAnimations();
+                    })
+                    .to(preloader, {
+                        yPercent: -100,
+                        duration: 0.8,
+                        ease: "power4.inOut"
+                    }, "-=0.1");
+            }, 500);
+        });
+
+        function initMainAnimations() {
+            gsap.set('.hero-badge', { opacity: 0, y: 30 });
+            gsap.set('.hero-title', { opacity: 0, y: 50 });
+            gsap.set('.hero-desc', { opacity: 0, y: 30 });
+            gsap.set('.hero-cta .btn', { opacity: 0, y: 20 });
+            gsap.set('.hero-img-main', { opacity: 0, scale: 0.9, x: 50 });
+            gsap.set('.hero-float-1', { opacity: 0, x: -50, y: 30 });
+            gsap.set('.hero-float-2', { opacity: 0, x: 50, y: -30 });
+
+            const heroTl = gsap.timeline();
+            
+            heroTl
+                .to('.hero-badge', {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "power3.out"
+                })
+                .to('.hero-title', {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power3.out"
+                }, "-=0.3")
+                .to('.hero-desc', {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "power3.out"
+                }, "-=0.4")
+                .to('.hero-cta .btn', {
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.15,
+                    duration: 0.5,
+                    ease: "power3.out"
+                }, "-=0.3")
+                .to('.hero-img-main', {
+                    opacity: 1,
+                    scale: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                }, "-=0.8")
+                .to('.hero-float-1', {
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power3.out"
+                }, "-=0.5")
+                .to('.hero-float-2', {
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power3.out"
+                }, "-=0.6");
+
+            gsap.to('.hero-float-1', {
+                y: '+=15',
+                duration: 2.5,
+                ease: "sine.inOut",
+                repeat: -1,
+                yoyo: true
+            });
+
+            gsap.to('.hero-float-2', {
+                y: '-=12',
+                duration: 2,
+                ease: "sine.inOut",
+                repeat: -1,
+                yoyo: true,
+                delay: 0.5
+            });
+
+            gsap.utils.toArray('.feature-showcase').forEach((showcase, i) => {
+                const content = showcase.querySelector('.feature-content');
+                const image = showcase.querySelector('.feature-image');
+                const isReverse = showcase.classList.contains('reverse');
+
+                gsap.from(content, {
+                    scrollTrigger: {
+                        trigger: showcase,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    opacity: 0,
+                    x: isReverse ? 50 : -50,
+                    duration: 0.8,
+                    ease: "power3.out"
+                });
+
+                gsap.from(image, {
+                    scrollTrigger: {
+                        trigger: showcase,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    opacity: 0,
+                    x: isReverse ? -50 : 50,
+                    scale: 0.95,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    delay: 0.2
+                });
+
+                const floatImg = image.querySelector('.feature-img-float');
+                if (floatImg) {
+                    gsap.from(floatImg, {
+                        scrollTrigger: {
+                            trigger: showcase,
+                            start: "top 70%",
+                            toggleActions: "play none none reverse"
+                        },
+                        opacity: 0,
+                        y: 30,
+                        scale: 0.8,
+                        duration: 0.6,
+                        ease: "back.out(1.7)",
+                        delay: 0.5
+                    });
+                }
+            });
+
+            gsap.from('.verdict-card', {
+                scrollTrigger: {
+                    trigger: '.verdicts-grid',
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 0,
+                y: 30,
+                scale: 0.9,
+                stagger: 0.1,
+                duration: 0.5,
+                ease: "back.out(1.7)"
+            });
+
+            gsap.utils.toArray('.step-item').forEach((step, i) => {
+                const content = step.querySelector('.step-content');
+                const image = step.querySelector('.step-image');
+                const number = step.querySelector('.step-number');
+
+                gsap.from(number, {
+                    scrollTrigger: {
+                        trigger: step,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    scale: 0,
+                    rotation: -180,
+                    duration: 0.6,
+                    ease: "back.out(1.7)"
+                });
+
+                gsap.from(content.querySelectorAll('h3, p'), {
+                    scrollTrigger: {
+                        trigger: step,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    opacity: 0,
+                    y: 30,
+                    stagger: 0.15,
+                    duration: 0.6,
+                    ease: "power3.out",
+                    delay: 0.3
+                });
+
+                gsap.from(image, {
+                    scrollTrigger: {
+                        trigger: step,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    opacity: 0,
+                    scale: 0.9,
+                    y: 30,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    delay: 0.4
+                });
+            });
+
+            gsap.from('.stats-preview-card', {
+                scrollTrigger: {
+                    trigger: '.stats-preview-card',
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                ease: "power3.out"
+            });
+
+            gsap.from('.stat-item', {
+                scrollTrigger: {
+                    trigger: '.stats-grid',
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 0,
+                y: 30,
+                stagger: 0.1,
+                duration: 0.5,
+                ease: "power3.out",
+                delay: 0.3
+            });
+
+            gsap.utils.toArray('.stat-value').forEach(stat => {
+                const value = stat.textContent;
+                const isPercent = value.includes('%');
+                const numValue = parseFloat(value);
+                
+                ScrollTrigger.create({
+                    trigger: stat,
+                    start: "top 85%",
+                    onEnter: () => {
+                        gsap.from(stat, {
+                            textContent: 0,
+                            duration: 1.5,
+                            ease: "power2.out",
+                            snap: { textContent: isPercent ? 1 : 0.1 },
+                            onUpdate: function() {
+                                if (isPercent) {
+                                    stat.textContent = Math.round(gsap.getProperty(stat, "textContent")) + '%';
+                                } else if (value.includes('.')) {
+                                    stat.textContent = gsap.getProperty(stat, "textContent").toFixed(1);
+                                } else {
+                                    stat.textContent = Math.round(gsap.getProperty(stat, "textContent"));
+                                }
+                            }
+                        });
+                    },
+                    once: true
+                });
+            });
+
+            gsap.from('.warning-box', {
+                scrollTrigger: {
+                    trigger: '.warning-box',
+                    start: "top 90%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 0,
+                x: -30,
+                duration: 0.6,
+                ease: "power3.out"
+            });
+
+            gsap.utils.toArray('.section-header').forEach(header => {
+                gsap.from(header.children, {
+                    scrollTrigger: {
+                        trigger: header,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    opacity: 0,
+                    y: 30,
+                    stagger: 0.15,
+                    duration: 0.6,
+                    ease: "power3.out"
+                });
+            });
+
+            gsap.from('.footer > .container > *', {
+                scrollTrigger: {
+                    trigger: '.footer',
+                    start: "top 90%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 0,
+                y: 30,
+                stagger: 0.15,
+                duration: 0.6,
+                ease: "power3.out"
+            });
+
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    gsap.to(btn, {
+                        scale: 1.05,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+                btn.addEventListener('mouseleave', () => {
+                    gsap.to(btn, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+            });
+        }
+
+        if (document.readyState === 'complete') {
+            window.dispatchEvent(new Event('load'));
+        }
     </script>
 </body>
 </html>
